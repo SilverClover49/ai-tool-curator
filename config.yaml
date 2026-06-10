@@ -1,7 +1,9 @@
 # AI Tool Curator Configuration
 
+data_dir: "data/raw"
+
 llm:
-  model: "gemma-4-4b-it-Q4_K_M.gguf"
+  model: "google_gemma-4-E4B-it-Q4_K_M.gguf"
   model_dir: "llama.cpp/models"
   n_gpu_layers: 99        # Max GPU offload (adjust based on VRAM)
   context_length: 8192    # Lower = less VRAM usage

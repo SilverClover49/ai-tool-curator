@@ -1,13 +1,5 @@
-# llama.cpp build artifacts
-llama.cpp/build/
-llama.cpp/*.o
-llama.cpp/*.a
-llama.cpp/*.dll
-llama.cpp/*.exe
-llama.cpp/ggml-*.o
-
-# Model files (too large for git)
-llama.cpp/models/*.gguf
+# llama.cpp (cloned by setup.cmd, not tracked in git)
+llama.cpp/
 
 # Python
 __pycache__/
