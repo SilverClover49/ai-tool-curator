@@ -1,0 +1,60 @@
+# AI Tool Curator Configuration
+
+llm:
+  model: "gemma-4-4b-it-Q4_K_M.gguf"
+  model_dir: "llama.cpp/models"
+  n_gpu_layers: 99        # Max GPU offload (adjust based on VRAM)
+  context_length: 8192    # Lower = less VRAM usage
+  temperature: 0.3        # Low for deterministic classification
+  host: "127.0.0.1"
+  port: 8080
+
+ingest:
+  youtube:
+    enabled: true
+    file_patterns:
+      - "takeout*/**/watch-history.json"
+      - "takeout*/**/youtube-history.json"
+  google:
+    enabled: true
+    file_patterns:
+      - "takeout*/**/MyActivity.json"
+      - "takeout*/**/search-history.json"
+  whatsapp:
+    enabled: false  # v2
+    file_patterns:
+      - "**/*.txt"
+
+extraction:
+  batch_size: 50          # Lines per LLM call
+  max_retries: 3
+  cache_enabled: true
+  known_tools_db: "src/extract/known_tools.json"
+
+categories:
+  - name: "Image Generation"
+    keywords: ["stable diffusion", "midjourney", "dall-e", "comfyui", "flux", "sdxl"]
+  - name: "Video Generation"
+    keywords: ["sora", "runway", "pika", "kling", "luma", "hailuo"]
+  - name: "Coding Assistants"
+    keywords: ["copilot", "cursor", "aider", "cline", "continue", "tabnine"]
+  - name: "AI Agents"
+    keywords: ["autogpt", "babyagi", "crewai", "langchain", "openai agents"]
+  - name: "Text/LLM"
+    keywords: ["chatgpt", "claude", "gemini", "llama", "mistral", "gpt"]
+  - name: "Voice/Audio"
+    keywords: ["elevenlabs", "whisper", "bark", "tortoise", "musicgen"]
+  - name: "3D/Design"
+    keywords: ["meshy", "tripo", "point-e", "shap-e"]
+  - name: "Search/RAG"
+    keywords: ["perplexity", "you.com", "phind", "kagi"]
+  - name: "Automation/No-Code"
+    keywords: ["zapier ai", "make ai", "n8n", "flowise", "dify"]
+  - name: "Other"
+    keywords: []
+
+vault:
+  output_dir: "vault"
+  tool_note_template: "src/vault/templates/tool_note.md"
+  moc_template: "src/vault/templates/moc.md"
+  rating_scale: 5        # 1-5 viability rating
