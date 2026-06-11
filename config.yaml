@@ -3,9 +3,9 @@
 data_dir: "data/raw"
 
 llm:
-  model: "google_gemma-4-E4B-it-Q4_K_M.gguf"
+  model: "gemma-4-12B-it-qat-UD-Q4_K_XL.gguf"
   model_dir: "llama.cpp/models"
-  n_gpu_layers: 99        # Max GPU offload (adjust based on VRAM)
+  n_gpu_layers: 22        # RTX 3050 4GB: ~22 layers GPU, rest CPU
   context_length: 8192    # Lower = less VRAM usage
   temperature: 0.3        # Low for deterministic classification
   host: "127.0.0.1"

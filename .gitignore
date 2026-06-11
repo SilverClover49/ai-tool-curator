@@ -26,6 +26,10 @@ desktop.ini
 .vscode/
 .idea/
 
+# Zig build artifacts
+gui/.zig-cache/
+gui/zig-out/
+
 # Secrets
 .env
 *.key
